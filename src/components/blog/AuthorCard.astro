@@ -1,0 +1,17 @@
+---
+import Heading from "../ui/Heading.astro";
+
+import katie from "@/assets/avatar.jpeg";
+import Link from "../ui/Link.astro";
+---
+
+<section aria-label="Connect with Katie" class="blog-bio container">
+    <img src={katie.src} alt="Katie" />
+    <div>
+        <Heading tagName="h2" tagSize="h2">Hey, I'm Katie</Heading>
+        <p>
+            This is a small little paragraph about me. Bloggin' is cool. Like all  the coolest do it. So I will add my paragraph here telling you why I too do it.
+        </p>
+        <Link href="/#connect">Let's Connect</Link>
+    </div>
+</section>

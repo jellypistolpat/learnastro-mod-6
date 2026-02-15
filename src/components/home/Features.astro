@@ -1,0 +1,25 @@
+---
+//content
+import { getCollection } from "astro:content";
+const features = await getCollection("features");
+
+//components
+import Heading from "@/ui/Heading.astro";
+---
+
+<section aria-label="Feature section" class="features">
+    <div>
+        <Heading tagName="h2" tagSize="h2">I build fast sites</Heading>
+        <ul role="list">
+            {
+                features.map(({data: feature}) => (
+                    <li>
+                        <Fragment set:html={feature.icon} />
+                        <Heading tagName="h3" tagSize="h4">{feature.title}</Heading>
+                        <p>{feature.description}</p>
+                    </li>
+                ))
+            }
+        </ul>
+    </div>
+</section>

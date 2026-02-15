@@ -1,0 +1,44 @@
+---
+
+//Layout
+import Layout from "@/layouts/Layout.astro";
+
+//Components
+import Hero from "@/components/Hero.astro";
+import Heading from "@/components/ui/Heading.astro";
+import Features from "@/components/home/Features.astro";
+import Projects from "@/components/home/Projects.astro";
+import { getCollection } from "astro:content";
+import { getEntry } from "astro:content";
+import BlogCard from "@/components/blog/BlogCard.astro";
+import Connect from "@/components/Connect.astro";
+
+const posts = await getCollection("blog", ({ data }) => !data.isDraft);
+const blogEntry = await getEntry("blog", "frontend-frameworks-evolution");
+const authors = await getCollection("authors");
+// console.log(authors);
+---
+
+<Layout title="Home">
+    <Hero />
+    <Features />
+    <section aria-labelledby="recent-projects" class="container rows">
+        <Heading tagName="h2" tagSize="h2" id="recent-projects">Recent Projects</Heading>
+        <Projects limit={3} tagName="h3" />
+    </section>
+    <Connect />
+    <section aria-labelledby="recent-posts" class="container rows">
+        <Heading tagName="h2" tagSize="h2" id="recent-posts">Recent Posts</Heading>
+        <div class="grid-wrapper">
+            {posts.sort(
+                (a, b) =>
+                    new Date(b.data.pubDate).getTime() -
+                    new Date(a.data.pubDate).getTime()
+                )
+                .slice(0, 3).map((post) => (
+                    <BlogCard post={post} tagName="h3"/>
+                ))                
+            }
+        </div>
+    </section>
+</Layout>

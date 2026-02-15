@@ -1,0 +1,8 @@
+<footer>
+    <p>&copy; <span id="copyright">{new Date().getFullYear()}</span> Jelly Pistol Inc.</p>
+</footer>
+
+<script>
+    const copyrightSpan = document.getElementById("copyright") as unknown as HTMLSpanElement;
+    copyrightSpan.textContent = new Date().getFullYear().toString();
+</script>

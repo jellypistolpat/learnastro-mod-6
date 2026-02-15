@@ -1,0 +1,29 @@
+---
+
+//Layout
+import Layout from "@/layouts/Layout.astro";
+
+//Components
+import Hero from "@/components/Hero.astro";
+import Connect from "@/components/Connect.astro";
+---
+
+<Layout title="404 | We can't find that stuff you want">
+    <Hero
+        title="404"
+        content="Oops. We got lost."
+        links={[
+            {
+                href: "/",
+                name: "Home",
+                variant: "primary",
+            },
+            {
+                href: "/katie-haus-resume.pdf",
+                name: "Get that CV",
+                variant: "secondary",
+            },
+        ]}
+    />
+    <Connect />
+</Layout>
