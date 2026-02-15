@@ -7,5 +7,6 @@ import react from "@astrojs/react";
 
 // https://astro.build/config
 export default defineConfig({
+  site: "https://splendid-llama-a8be24.netlify.app/",
   integrations: [sitemap(), react()]
 });
